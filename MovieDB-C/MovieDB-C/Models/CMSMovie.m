@@ -11,11 +11,10 @@
 static NSString * const titleKey = @"original_title";
 static NSString * const ratingKey = @"vote_average";
 static NSString * const summaryKey = @"overview";
-static NSString * const posterKey = @"poster_path";
 
 @implementation CMSMovie
 
-- (instancetype)initWithTitle:(NSString *)title rating:(NSInteger)rating summary:(NSString *)summary poster:(NSString *)poster
+- (instancetype)initWithTitle:(NSString *)title rating:(NSNumber *)rating summary:(NSString *)summary
 {
     self = [super init];
     
@@ -24,7 +23,6 @@ static NSString * const posterKey = @"poster_path";
         _title = title;
         _rating = rating;
         _summary = summary;
-        _poster = poster;
     }
     return self;
 }
@@ -36,11 +34,10 @@ static NSString * const posterKey = @"poster_path";
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     NSString *title = dictionary[titleKey];
-    NSInteger rating = [dictionary[ratingKey] integerValue];         //CHECK THIS***
+    NSNumber *rating = dictionary[ratingKey];
     NSString *summary = dictionary[summaryKey];
-    NSString *poster = dictionary[posterKey];
     
-    return [self initWithTitle:title rating:rating summary:summary poster:poster];
+    return [self initWithTitle:title rating:rating summary:summary];
 }
 
 @end

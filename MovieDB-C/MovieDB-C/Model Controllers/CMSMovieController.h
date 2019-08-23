@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)searchForMovieWithSearchTerm:(NSString *)searchTerm completion:(void (^) (NSArray<CMSMovie *> *movies))completion;
 
-+ (void)fetchPosterForMovie:(CMSMovie *)movie completion:(void (^) (UIImage *))completion;
-
 @end
 
 NS_ASSUME_NONNULL_END

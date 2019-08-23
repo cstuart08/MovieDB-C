@@ -13,17 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CMSMovie : NSObject
 
 @property (nonatomic, readonly, copy) NSString *title;
-@property (nonatomic, readonly) NSInteger rating;
-@property (nonatomic, readonly, copy) NSString *summary;
-@property (nonatomic, readonly, copy) NSString *poster;
+@property (nonatomic, readonly) NSNumber *rating;
+@property (nonatomic, readonly, nullable) NSString *summary;
 
-- (instancetype)initWithTitle:(NSString *)title rating:(NSInteger)rating summary:(NSString *)summary poster:(NSString *)poster;
+- (instancetype)initWithTitle:(NSString *)title rating:(NSNumber *)rating summary:(NSString *)summary;
 
 @end
 
 @interface CMSMovie (JSONConvertable)
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary<NSString *, id> *)dictionary;
 
 @end
 

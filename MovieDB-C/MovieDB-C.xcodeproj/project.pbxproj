@@ -14,6 +14,8 @@
 		D42E0CEE231038A10090E680 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D42E0CED231038A10090E680 /* main.m */; };
 		D42E0CFB231039E00090E680 /* CMSMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = D42E0CFA231039E00090E680 /* CMSMovie.m */; };
 		D42E0CFE231040FB0090E680 /* CMSMovieController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42E0CFD231040FB0090E680 /* CMSMovieController.m */; };
+		D42E0D01231047A80090E680 /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42E0D00231047A80090E680 /* MovieListTableViewController.swift */; };
+		D42E0D0323104CC60090E680 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42E0D0223104CC60090E680 /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		D42E0CFA231039E00090E680 /* CMSMovie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMSMovie.m; sourceTree = "<group>"; };
 		D42E0CFC231040FB0090E680 /* CMSMovieController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMSMovieController.h; sourceTree = "<group>"; };
 		D42E0CFD231040FB0090E680 /* CMSMovieController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMSMovieController.m; sourceTree = "<group>"; };
+		D42E0CFF231047A80090E680 /* MovieDB-C-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieDB-C-Bridging-Header.h"; sourceTree = "<group>"; };
+		D42E0D00231047A80090E680 /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
+		D42E0D0223104CC60090E680 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 				D42E0CF72310392E0090E680 /* Models */,
 				D42E0CF6231039240090E680 /* Model Controllers */,
 				D42E0CF52310391C0090E680 /* View Controllers */,
+				D42E0D0423104CCD0090E680 /* Views */,
 				D42E0CF4231039120090E680 /* Resources */,
 			);
 			path = "MovieDB-C";
@@ -86,6 +92,8 @@
 		D42E0CF52310391C0090E680 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D42E0D00231047A80090E680 /* MovieListTableViewController.swift */,
+				D42E0CFF231047A80090E680 /* MovieDB-C-Bridging-Header.h */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -114,6 +122,14 @@
 				D42E0CE4231038A10090E680 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D42E0D0423104CCD0090E680 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D42E0D0223104CC60090E680 /* MovieTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +164,7 @@
 				TargetAttributes = {
 					D42E0CDA231038A10090E680 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -189,8 +206,10 @@
 			files = (
 				D42E0CFB231039E00090E680 /* CMSMovie.m in Sources */,
 				D42E0CEE231038A10090E680 /* main.m in Sources */,
+				D42E0D0323104CC60090E680 /* MovieTableViewCell.swift in Sources */,
 				D42E0CFE231040FB0090E680 /* CMSMovieController.m in Sources */,
 				D42E0CE0231038A10090E680 /* AppDelegate.m in Sources */,
+				D42E0D01231047A80090E680 /* MovieListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTDCPCY5V;
 				INFOPLIST_FILE = "$(SRCROOT)/MovieDB-C/Resources/Info.plist";
@@ -341,6 +361,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CameronStuart.MovieDB-C";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MovieDB-C/View Controllers/MovieDB-C-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -349,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTDCPCY5V;
 				INFOPLIST_FILE = "$(SRCROOT)/MovieDB-C/Resources/Info.plist";
@@ -358,6 +382,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CameronStuart.MovieDB-C";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MovieDB-C/View Controllers/MovieDB-C-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -14,6 +14,7 @@ static NSString * const baseURLString = @"https://api.themoviedb.org/3/search/mo
 static NSString * const apiKeyTerm = @"api_key";
 static NSString * const apiKeyValue = @"f773bd99f1300ca88446eb3e01aed5a6";
 static NSString * const queryTerm = @"query";
+static NSString * const posterBaseURL = @"http://image.tmdb.org/t/p/w500/";
 
 @implementation CMSMovieController
 
@@ -42,6 +43,8 @@ static NSString * const queryTerm = @"query";
             completion(nil);
             return;
         }
+
+        NSMutableArray<CMSMovie *> *moviesArray = [NSMutableArray new];
         
         NSDictionary *topLevelDictionary = [NSJSONSerialization JSONObjectWithData:data options:2 error:&error];
         if (!topLevelDictionary)
@@ -50,39 +53,13 @@ static NSString * const queryTerm = @"query";
             completion(nil);
             return;
         }
-        
-        NSMutableArray<CMSMovie *> *moviesArray = [NSMutableArray new];
-        
-        for (NSDictionary *movieDictionary in topLevelDictionary)
+        NSArray *resultsArray = topLevelDictionary[@"results"];
+        for (NSDictionary *movieDictionary in resultsArray)
         {
             CMSMovie *movie = [[CMSMovie alloc]initWithDictionary:movieDictionary];
             [moviesArray addObject:movie];
         }
         completion(moviesArray);
-        
-    }]resume];
-}
-
-+ (void)fetchPosterForMovie:(CMSMovie *)movie completion:(void (^)(UIImage *))completion
-{
-    NSURL *posterURL = [[NSURL alloc] initWithString:movie.poster];
-    
-    [[NSURLSession.sharedSession dataTaskWithURL:posterURL completionHandler:^(NSData * data, NSURLResponse * response, NSError * error) {
-        
-        if (error) {
-            NSLog(@"Error: %@, %@", error, error.localizedDescription);
-            completion(nil);
-            return;
-        }
-        
-        if (!data) {
-            NSLog(@"Error receiving data: %@, %@", error, error.localizedDescription);
-            completion(nil);
-            return;
-        }
-        
-        UIImage *poster = [[UIImage alloc] initWithData:data];
-        completion(poster);
         
     }]resume];
 }
